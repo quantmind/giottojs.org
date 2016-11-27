@@ -36,7 +36,7 @@ CONTENT_GROUPS = {
 HTML_SCRIPTS = ['giottojs']
 
 HTML_LINKS = [
-    "giottojs.css",
+    "/giottojs-default.css",
     {"rel": "apple-touch-icon", "sizes": "57x57", "href": "/icons/apple-icon-57x57.png"},
     {"rel": "apple-touch-icon", "sizes": "57x57", "href": "/icons/apple-icon-57x57.png"},
     {"rel": "apple-touch-icon", "sizes": "60x60", "href": "/icons/apple-icon-60x60.png"},

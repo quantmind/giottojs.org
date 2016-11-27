@@ -18,4 +18,4 @@ class Extension(LuxExtension):
         d = os.path.dirname
         yield MediaRouter('/', d(d(__file__)),
                           serve_only=('json', 'png', 'jpeg', 'svg',
-                                      'txt', 'js', 'ico'))
+                                      'txt', 'js', 'css', 'ico'))

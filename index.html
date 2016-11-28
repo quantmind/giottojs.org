@@ -9,8 +9,8 @@
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
 <meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
-<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBUElfVVJMIjoiL2FwaSIsIk1JTklGSUVEX01FRElBIjp0cnVlLCJsdXhfdmVyc2lvbiI6IjAuOC4xLmRldjIwMTYxMTI1MjE1OTAxIiwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwiREFURVRJTUVfRk9STUFUIjoiZCBNTU0geSwgaDptbTpzcyBhIiwiTE9DQUxFIjoiZW5fR0IiLCJwYWdlIjp7ImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvc2l0ZS9pbmRleCIsImJvZHlfbGVuZ3RoIjozMDMsInBhdGgiOiIiLCJzbHVnIjoiaW5kZXgiLCJncm91cCI6InNpdGUiLCJ0aXRsZSI6Ikdpb3R0b0pTIn0sIk1FRElBX1VSTCI6Ii9tZWRpYS8iLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIiwiQ09QWVJJR0hUIjoiTHV4IiwiZGVidWciOmZhbHNlfQ.bEXl83ejmzJtuh06LhafDLwWCacONXztRa24fg6L4-I' name='html-context'>
-<link href='/media/giottojs.css' rel='stylesheet' type='text/css'>
+<meta content='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJBUElfVVJMIjoiL2FwaSIsIkxPQ0FMRSI6ImVuX0dCIiwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwiZGVidWciOmZhbHNlLCJNSU5JRklFRF9NRURJQSI6dHJ1ZSwiTUVESUFfVVJMIjoiL21lZGlhLyIsIkFQUF9OQU1FIjoiR2lvdHRvSnMiLCJwYWdlIjp7Imdyb3VwIjoic2l0ZSIsInNsdWciOiJpbmRleCIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvc2l0ZS9pbmRleCIsInBhdGgiOiIiLCJ0aXRsZSI6Ikdpb3R0b0pTIiwiYm9keV9sZW5ndGgiOjI4NH0sIkNPUFlSSUdIVCI6Ikx1eCIsImx1eF92ZXJzaW9uIjoiMC44LjEuZGV2MjAxNjExMjYxOTA2MDgiLCJEQVRFVElNRV9GT1JNQVQiOiJkIE1NTSB5LCBoOm1tOnNzIGEifQ.pBoPvcu38X5Czr9xn6bsYR19wL8aG3v9BhD1GjnwTXI' name='html-context'>
+<link href='/giottojs-default.css' rel='stylesheet' type='text/css'>
 <link href='/icons/apple-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
 <link href='/icons/apple-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
 <link href='/icons/apple-icon-72x72.png' rel='apple-touch-icon' sizes='72x72'>
@@ -25,15 +25,16 @@
 <link href='/icons/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
 <link href='/icons/android-icon-192x192.png' rel='icon' sizes='192x192' type='image/png'>
 <link href='/icons/manifest.json' rel='manifest'>
-<script async src='/media/giottojs.min.js' type='application/javascript'></script>
+<script async src='https://giottojs.org/latest/giotto.min.js' type='application/javascript'></script>
+<script async src='/giottojs.min.js' type='application/javascript'></script>
 </head>
 <body>
 <main id="page-header" class="page-header landing">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center" full-page>
-                <div class="center-block" style="max-width: 400px">
-                    <img id="giotto-logo" src="/giotto.svg" alt="GiottoJS" class="img-responsive">
+                <div class="mx-auto" style="max-width: 400px">
+                    <img id="giotto-logo" src="/giotto.svg" alt="GiottoJS" class="img-fluid">
                 </div>
                 <h2>GiottoJS</h2>
                 <p class="lead">D3 based Visualization Library</p>
@@ -51,19 +52,37 @@
 <div id="page-main">
     <div class="features container text-center">
 <article>
-    $html_feature_giotto_d3
+    <h3>Data analysis and Visualization</h3>
+
+<div data-options='gexamples.barFeature' giotto-chart></div>
+
+<p>GiottoJS is a javascript library under active development. It is built on top
+of [d3js][], a low level data and svg library for the web.</p>
 </article>
 <article>
-    $html_feature_canvas
+    <h3>Svg and canvas support on Html5</h3>
+
+<div data-options='gexamples.svgCanvas' giotto-viz></div>
+
+<p>You can visualize your data using the same API on either <code>&lt;svg&gt;</code> or
+<code>&lt;canvas&gt;</code> elements. Currently SVG is better supported.</p>
 </article>
 <article>
-    $html_feature_charts
+    <h3>Powerful and Flexible Charting</h3>
+
+<div data-options='gexamples.chartFeature' giotto-chart></div>
+
+<p>You can visualize your data in several different ways using the power and flexibility
+of [d3][] combined with the charting tools provided by GiottoJS.</p>
 </article>
 <article>
-$html_feature_flexibility
-</article>
-<article>
-$html_feature_angular
+    <h3>Open Source and Liberal License</h3>
+
+<div data-options='gexamples.pieFeature' giotto-chart></div>
+
+<p>GiottoJS is released under the
+very liberal <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>.
+You can fork the code add the feature you need and send us your patch.</p>
 </article>
 <article>
 </article>

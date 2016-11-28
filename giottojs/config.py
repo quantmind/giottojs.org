@@ -33,7 +33,10 @@ CONTENT_GROUPS = {
     "context": {}
 }
 
-HTML_SCRIPTS = ['giottojs']
+HTML_SCRIPTS = [
+    'https://giottojs.org/latest/giotto',
+    '/giottojs'
+]
 
 HTML_LINKS = [
     "/giottojs-default.css",

@@ -20,7 +20,8 @@ CONTENT_GROUPS = {
     "site": {
         "path": "*",
         "meta": {
-            "priority": 1
+            "priority": 1,
+            "body_template": "home.html"
         }
     },
     "examples": {
@@ -33,10 +34,16 @@ CONTENT_GROUPS = {
     "context": {}
 }
 
-HTML_SCRIPTS = [
-    'https://giottojs.org/latest/giotto',
-    '/giottojs'
-]
+if os.environ.get('GIOTTO_ENV') == 'dev':
+    HTML_BODY_SCRIPTS = [
+        '/giotto-dev.js',
+        '/giottojs'
+    ]
+else:
+    HTML_BODY_SCRIPTS = [
+        '/latest/giotto',
+        '/giottojs'
+    ]
 
 HTML_LINKS = [
     "/giottojs-default.css",
@@ -69,5 +76,10 @@ HTML_META = [
 
 OAUTH_PROVIDERS = {'google': {'analytics': {'id': 'UA-54439804-4'}},
                    'twitter': {'site': '@quantmind'}}
+
+CONTENT_LINKS = {
+    'd3': 'https://d3js.org/',
+    'd3js': 'https://d3js.org/'
+}
 
 workers = 0

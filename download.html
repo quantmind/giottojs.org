@@ -9,7 +9,7 @@
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
 <meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
-<meta content='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJBUElfVVJMIjoiL2FwaSIsIkxPQ0FMRSI6ImVuX0dCIiwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwiZGVidWciOmZhbHNlLCJNSU5JRklFRF9NRURJQSI6dHJ1ZSwiTUVESUFfVVJMIjoiL21lZGlhLyIsIkFQUF9OQU1FIjoiR2lvdHRvSnMiLCJwYWdlIjp7Imdyb3VwIjoic2l0ZSIsInNsdWciOiJkb3dubG9hZCIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvc2l0ZS9kb3dubG9hZCIsInBhdGgiOiIvZG93bmxvYWQiLCJ0aXRsZSI6Ikdpb3R0b0pTIC0gSW5zdGFsbGF0aW9uIiwiYm9keV9sZW5ndGgiOjE0MTR9LCJDT1BZUklHSFQiOiJMdXgiLCJsdXhfdmVyc2lvbiI6IjAuOC4xLmRldjIwMTYxMTI2MTkwNjA4IiwiREFURVRJTUVfRk9STUFUIjoiZCBNTU0geSwgaDptbTpzcyBhIn0._oXQbjQK4Txyl9W1BSDTtz-C0IbC3B265Q8AuM3r-Bk' name='html-context'>
+<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNRURJQV9VUkwiOiIvbWVkaWEvIiwiTUlOSUZJRURfTUVESUEiOnRydWUsInBhZ2UiOnsiYXBpX3VybCI6Imh0dHBzOi8vZ2lvdHRvanMub3JnL2FwaS9jb250ZW50cy9zaXRlL2Rvd25sb2FkIiwiYm9keV90ZW1wbGF0ZSI6ImhvbWUuaHRtbCIsInBhdGgiOiIvZG93bmxvYWQiLCJncm91cCI6InNpdGUiLCJzbHVnIjoiZG93bmxvYWQiLCJ0aXRsZSI6Ikdpb3R0b0pTIC0gSW5zdGFsbGF0aW9uIiwiYm9keV9sZW5ndGgiOjE0MTR9LCJkZWJ1ZyI6ZmFsc2UsIkRBVEVfRk9STUFUIjoiZCBNTU0geSIsIkFQSV9VUkwiOiIvYXBpIiwiTE9DQUxFIjoiZW5fR0IiLCJEQVRFVElNRV9GT1JNQVQiOiJkIE1NTSB5LCBoOm1tOnNzIGEiLCJDT1BZUklHSFQiOiJMdXgiLCJsdXhfdmVyc2lvbiI6IjAuOC4xLmRldjIwMTYxMTI4MTUwMjIyIiwiQVBQX05BTUUiOiJHaW90dG9KcyJ9.ZAIVshlkhV7yhPIGzE_cxSMSE7KlFduEEw_QseFs6mE' name='html-context'>
 <link href='/giottojs-default.css' rel='stylesheet' type='text/css'>
 <link href='/icons/apple-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
 <link href='/icons/apple-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
@@ -25,11 +25,12 @@
 <link href='/icons/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
 <link href='/icons/android-icon-192x192.png' rel='icon' sizes='192x192' type='image/png'>
 <link href='/icons/manifest.json' rel='manifest'>
-<script async src='https://giottojs.org/latest/giotto.min.js' type='application/javascript'></script>
-<script async src='/giottojs.min.js' type='application/javascript'></script>
 </head>
 <body>
-<p>If you use <a href="https://www.npmjs.com/package/d3-quant">NPM</a>,
+<div id="l-page">
+    <div id="l-page-first"></div>
+    <navbar d3-model="mainNavbar" brand-height="60"></navbar>
+    <p>If you use <a href="https://www.npmjs.com/package/d3-quant">NPM</a>,
 <code>npm install d3-quant</code>. Otherwise, download the
 <a href="https://github.com/quantmind/d3-quant/releases/latest">latest release</a>.
 The released bundle supports AMD, CommonJS, and vanilla environments.
@@ -53,5 +54,20 @@ Try <a href="https://tonicdev.com/npm/d3-quant">d3-quant</a> in your browser.</p
 
 <p><a href="https://travis-ci.org/quantmind/giotto" target="_self">
 <img src="https://travis-ci.org/quantmind/giotto.svg?branch=master" alt="giotto CI"></a>
-<a href="https://coveralls.io/r/quantmind/giotto?branch=master"><img alt="Coverage Status" src="https://img.shields.io/coveralls/quantmind/giotto.svg" /></a></p></body>
+<a href="https://coveralls.io/r/quantmind/giotto?branch=master"><img alt="Coverage Status" src="https://img.shields.io/coveralls/quantmind/giotto.svg" /></a></p>
+    <div class="hidden-print">
+    <div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-sm-12 small">
+<p>Library released under the <a href="http://opensource.org/licenses/BSD-3-Clause">BSD License</a>.</p>
+<p>Copyright <year></year> <a href="http://lucasbardella.com">Luca Sbardella</a> and <a href="http://quantmind.com">Quantmind</a></p>
+</div>
+</div>
+</div>
+</div>
+    </div>
+</div><script src='/latest/giotto.min.js' type='application/javascript'></script>
+<script src='/giottojs.min.js' type='application/javascript'></script>
+</body>
 </html>

@@ -9,7 +9,7 @@
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
 <meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
-<meta content='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJBUElfVVJMIjoiL2FwaSIsIkxPQ0FMRSI6ImVuX0dCIiwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwiZGVidWciOmZhbHNlLCJNSU5JRklFRF9NRURJQSI6dHJ1ZSwiTUVESUFfVVJMIjoiL21lZGlhLyIsIkFQUF9OQU1FIjoiR2lvdHRvSnMiLCJwYWdlIjp7Imdyb3VwIjoic2l0ZSIsInNsdWciOiJpbmRleCIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvc2l0ZS9pbmRleCIsInBhdGgiOiIiLCJ0aXRsZSI6Ikdpb3R0b0pTIiwiYm9keV9sZW5ndGgiOjI4NH0sIkNPUFlSSUdIVCI6Ikx1eCIsImx1eF92ZXJzaW9uIjoiMC44LjEuZGV2MjAxNjExMjYxOTA2MDgiLCJEQVRFVElNRV9GT1JNQVQiOiJkIE1NTSB5LCBoOm1tOnNzIGEifQ.pBoPvcu38X5Czr9xn6bsYR19wL8aG3v9BhD1GjnwTXI' name='html-context'>
+<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNRURJQV9VUkwiOiIvbWVkaWEvIiwiTUlOSUZJRURfTUVESUEiOnRydWUsInBhZ2UiOnsiYXBpX3VybCI6Imh0dHBzOi8vZ2lvdHRvanMub3JnL2FwaS9jb250ZW50cy9zaXRlL2luZGV4IiwiYm9keV90ZW1wbGF0ZSI6ImhvbWUuaHRtbCIsInBhdGgiOiIiLCJncm91cCI6InNpdGUiLCJzbHVnIjoiaW5kZXgiLCJ0aXRsZSI6Ikdpb3R0b0pTIiwiYm9keV9sZW5ndGgiOjI4NH0sImRlYnVnIjpmYWxzZSwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwiQVBJX1VSTCI6Ii9hcGkiLCJMT0NBTEUiOiJlbl9HQiIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsIkNPUFlSSUdIVCI6Ikx1eCIsImx1eF92ZXJzaW9uIjoiMC44LjEuZGV2MjAxNjExMjgxNTAyMjIiLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIn0.L_m2y6libiodFev9iSlmWaT6Ae3n6D30wGuawfjIb80' name='html-context'>
 <link href='/giottojs-default.css' rel='stylesheet' type='text/css'>
 <link href='/icons/apple-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
 <link href='/icons/apple-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
@@ -25,14 +25,15 @@
 <link href='/icons/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
 <link href='/icons/android-icon-192x192.png' rel='icon' sizes='192x192' type='image/png'>
 <link href='/icons/manifest.json' rel='manifest'>
-<script async src='https://giottojs.org/latest/giotto.min.js' type='application/javascript'></script>
-<script async src='/giottojs.min.js' type='application/javascript'></script>
 </head>
 <body>
-<main id="page-header" class="page-header landing">
+<div id="l-page">
+    <div id="l-page-first"></div>
+    <navbar d3-model="mainNavbar" brand-height="60"></navbar>
+    <main id="page-header" class="page-header landing pt80">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center" full-page>
+            <div class="col-sm-12 text-xs-center" full-page>
                 <div class="mx-auto" style="max-width: 400px">
                     <img id="giotto-logo" src="/giotto.svg" alt="GiottoJS" class="img-fluid">
                 </div>
@@ -57,7 +58,7 @@
 <div data-options='gexamples.barFeature' giotto-chart></div>
 
 <p>GiottoJS is a javascript library under active development. It is built on top
-of [d3js][], a low level data and svg library for the web.</p>
+of <a href="https://d3js.org/" title="d3js">d3js</a>, a low level data and svg library for the web.</p>
 </article>
 <article>
     <h3>Svg and canvas support on Html5</h3>
@@ -73,7 +74,7 @@ of [d3js][], a low level data and svg library for the web.</p>
 <div data-options='gexamples.chartFeature' giotto-chart></div>
 
 <p>You can visualize your data in several different ways using the power and flexibility
-of [d3][] combined with the charting tools provided by GiottoJS.</p>
+of <a href="https://d3js.org/" title="d3">d3</a> combined with the charting tools provided by GiottoJS.</p>
 </article>
 <article>
     <h3>Open Source and Liberal License</h3>
@@ -87,5 +88,21 @@ You can fork the code add the feature you need and send us your patch.</p>
 <article>
 </article>
 </div>
-</div></body>
+</div>
+
+    <div class="hidden-print">
+    <div id="footer">
+<div class="container">
+<div class="row">
+<div class="col-sm-12 small">
+<p>Library released under the <a href="http://opensource.org/licenses/BSD-3-Clause">BSD License</a>.</p>
+<p>Copyright <year></year> <a href="http://lucasbardella.com">Luca Sbardella</a> and <a href="http://quantmind.com">Quantmind</a></p>
+</div>
+</div>
+</div>
+</div>
+    </div>
+</div><script src='/latest/giotto.min.js' type='application/javascript'></script>
+<script src='/giottojs.min.js' type='application/javascript'></script>
+</body>
 </html>

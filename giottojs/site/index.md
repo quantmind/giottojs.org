@@ -1,6 +1,4 @@
-title: GiottoJS
 template: partials/index.html
-image: /examples/giottologo.png
 
 <div class="features container text-center">
 <article>

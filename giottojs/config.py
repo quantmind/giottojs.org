@@ -8,12 +8,13 @@ AUTHENTICATION_BACKENDS = ['lux.core:SimpleBackend']
 CONTENT_REPO = os.path.dirname(__file__)
 API_URL = '/api'
 APP_NAME = 'GiottoJs'
-HTML_TITLE = 'GiottoJs Examples'
+HTML_TITLE = 'GiottoJs'
 DEFAULT_CONTENT_TYPE = 'text/html'
 EXTENSIONS = [
     'lux.extensions.sitemap',
     'lux.extensions.rest',
-    'lux.extensions.content'
+    'lux.extensions.content',
+    'lux.extensions.oauth'
 ]
 
 CONTENT_GROUPS = {
@@ -21,14 +22,17 @@ CONTENT_GROUPS = {
         "path": "*",
         "meta": {
             "priority": 1,
-            "body_template": "home.html"
+            "body_template": "home.html",
+            "image": "/giotto-banner.png"
         }
     },
     "examples": {
         "path": "examples",
-        "template": "partials/examples.html",
+        "body_template": "home.html",
+        "inner_template": "partials/examples.html",
         "meta": {
-            "priority": 1
+            "priority": 1,
+            "image": "/giotto-banner.png"
         }
     },
     "context": {}
@@ -74,8 +78,10 @@ HTML_META = [
     {'name': 'description', 'content': DESCRIPTION}
 ]
 
-OAUTH_PROVIDERS = {'google': {'analytics': {'id': 'UA-54439804-4'}},
-                   'twitter': {'site': '@quantmind'}}
+OAUTH_PROVIDERS = {
+    'google': {'analytics': {'id': 'UA-54439804-4'}},
+    'twitter': {'site': '@quantmind'}
+}
 
 CONTENT_LINKS = {
     'd3': 'https://d3js.org/',

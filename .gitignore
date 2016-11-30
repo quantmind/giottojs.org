@@ -2,4 +2,3 @@ __pycache__
 *.log
 .idea
 .DS_Store
-giotto-dev.js

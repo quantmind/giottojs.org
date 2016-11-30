@@ -39,13 +39,13 @@ CONTENT_GROUPS = {
 }
 
 
-if os.environ.get('GIOTTO_ENV') == 'dev':
-    HTML_BODY_SCRIPTS = [
-        '/require.js',
-        '/giotto-dev.js',
-        '/giottojs'
-    ]
-else:
+HTML_BODY_SCRIPTS = [
+    '/require.js',
+    '/giotto-dev.js',
+    '/giottojs'
+]
+
+if os.environ.get('GIOTTO_ENV') == 'prod':
     HTML_BODY_SCRIPTS = [
         '/require.js',
         '/latest/giotto',

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-debug='false' lang='en' prefix='og: http://ogp.me/ns#'>
 <head>
-<title>GiottoJS - Installation</title>
+<title>Navbar Component</title>
 <meta charset='utf-8'>
 <meta content='IE=edge' http-equiv='X-UA-Compatible'>
 <meta content='width=device-width, initial-scale=1' name='viewport'>
@@ -9,20 +9,20 @@
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
 <meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
-<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJEQVRFX0ZPUk1BVCI6ImQgTU1NIHkiLCJNRURJQV9VUkwiOiIvbWVkaWEvIiwibHV4X3ZlcnNpb24iOiIwLjguMSIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsIkFQSV9VUkwiOiIvYXBpIiwiTE9DQUxFIjoiZW5fR0IiLCJwYWdlIjp7Imdyb3VwIjoic2l0ZSIsImJvZHlfbGVuZ3RoIjoxNDE0LCJ0aXRsZSI6Ikdpb3R0b0pTIC0gSW5zdGFsbGF0aW9uIiwicGF0aCI6Ii9kb3dubG9hZCIsInNsdWciOiJkb3dubG9hZCIsImJvZHlfdGVtcGxhdGUiOiJob21lLmh0bWwiLCJhcGlfdXJsIjoiaHR0cHM6Ly9naW90dG9qcy5vcmcvYXBpL2NvbnRlbnRzL3NpdGUvZG93bmxvYWQifSwiQ09QWVJJR0hUIjoiTHV4IiwiZGVidWciOmZhbHNlLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIiwiTUlOSUZJRURfTUVESUEiOnRydWV9.g9gXDtSrxQ-rh5dBthT2PgaTINHKCUQUOkTFCUWO1gg' name='html-context'>
+<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJEQVRFX0ZPUk1BVCI6ImQgTU1NIHkiLCJNRURJQV9VUkwiOiIvbWVkaWEvIiwibHV4X3ZlcnNpb24iOiIwLjguMSIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsIkFQSV9VUkwiOiIvYXBpIiwiTE9DQUxFIjoiZW5fR0IiLCJwYWdlIjp7Imdyb3VwIjoiZXhhbXBsZXMiLCJib2R5X2xlbmd0aCI6NDE5LCJwYXRoIjoiL2V4YW1wbGVzL25hdmJhciIsInNsdWciOiJuYXZiYXIiLCJ0aXRsZSI6Ik5hdmJhciBDb21wb25lbnQiLCJhcGlfdXJsIjoiaHR0cHM6Ly9naW90dG9qcy5vcmcvYXBpL2NvbnRlbnRzL2V4YW1wbGVzL25hdmJhciJ9LCJDT1BZUklHSFQiOiJMdXgiLCJkZWJ1ZyI6ZmFsc2UsIkFQUF9OQU1FIjoiR2lvdHRvSnMiLCJNSU5JRklFRF9NRURJQSI6dHJ1ZX0.ysncWQ_41dQ3AC29k1mT5ZPzzzh3GVKesTlmzu8eOKg' name='html-context'>
 <meta content='website' property='og:type'>
-<meta content='https://giottojs.org/download' property='og:url'>
-<meta content='GiottoJS - Installation' property='og:title'>
+<meta content='https://giottojs.org/examples/navbar' property='og:url'>
+<meta content='Navbar Component' property='og:title'>
 <meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' property='og:description'>
 <meta content='en_GB' property='og:locale'>
 <meta content='GiottoJs' property='og:site_name'>
 <meta content='https://giottojs.org/giotto-banner.png' property='og:image'>
 <meta content='summary' name='twitter:card'>
 <meta content='@quantmind' name='twitter:site'>
-<meta content='GiottoJS - Installation' name='twitter:title'>
+<meta content='Navbar Component' name='twitter:title'>
 <meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='twitter:description'>
 <meta content='https://giottojs.org/giotto-banner.png' name='twitter:image'>
-<link href='https://giottojs.org/download' rel='canonical'>
+<link href='https://giottojs.org/examples/navbar' rel='canonical'>
 <link href='/giottojs-default.css' rel='stylesheet' type='text/css'>
 <link href='/icons/apple-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
 <link href='/icons/apple-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
@@ -43,31 +43,42 @@
 <div id="l-page">
     <div id="l-page-first"></div>
     <navbar d3-model="mainNavbar" brand-height="60"></navbar>
-    <p>If you use <a href="https://www.npmjs.com/package/d3-quant">NPM</a>,
-<code>npm install d3-quant</code>. Otherwise, download the
-<a href="https://github.com/quantmind/d3-quant/releases/latest">latest release</a>.
-The released bundle supports AMD, CommonJS, and vanilla environments.
-Create a custom build using <a href="https://github.com/rollup/rollup">Rollup</a> or
-your preferred bundler.
-You can also load directly from https://assets.quantmind.com:</p>
+    <div class="jumbotron jumbotron-fluid pt110 text-xs-center">
+    <h1 class="display-3">Navbar Component</h1>
+    <p class="lead"></p>
+</div>
+<div id="page-main" class="container">
+    <div class="row page-header">
+        <div class="col-sm-6">
+            <breadcrumbs></breadcrumbs>
+        </div>
+        <div class="col-sm-6">
+            <ul class="nav nav-pills">
+              <li ng-repeat="style in giottoThemes" ng-class="{active: style.name === currentTheme}" >
+                <a ng-href="?style=" ng-bind="style.title" ng-click="selectTheme($event, style.name)"></a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" d3-highlight>
+            <p><navbar d3-model="navbar"></navbar></p>
 
-<pre><code class="html">&lt;script src=&quot;https://assets.quantmind.com/d3-quant/0.1.0/d3-quant.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://assets.quantmind.com/d3-quant/0.1.0/d3-quant.min.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+<form>
+    <fieldset class="form-group">
+        <legend>Choose a style</legend>
+        <div class="radio" d3-for="theme in themes">
+            <label>
+                <input class="form-check-input" type="radio" name="theme" d3-on-click="navbar.$set('theme', theme)">
+                <span d3-html="theme"></span>
+            </label>
+        </div>
+    </fieldset>
+</form>
+        </div>
+    </div>
+</div>
 
-<p>In a vanilla environment, a <code>d3_quant</code> global is exported.
-Try <a href="https://tonicdev.com/npm/d3-quant">d3-quant</a> in your browser.</p>
-
-<p>Latest development versions</p>
-
-<ul>
-<li><a href="http://quantmind.github.io/giotto/media/giotto/giotto.js">giotto.js</a></li>
-<li><a href="http://quantmind.github.io/giotto/media/giotto/giotto.min.js">giotto.min.js</a></li>
-</ul>
-
-<p><a href="https://travis-ci.org/quantmind/giotto" target="_self">
-<img src="https://travis-ci.org/quantmind/giotto.svg?branch=master" alt="giotto CI"></a>
-<a href="https://coveralls.io/r/quantmind/giotto?branch=master"><img alt="Coverage Status" src="https://img.shields.io/coveralls/quantmind/giotto.svg" /></a></p>
     <div class="hidden-print">
     <div id="footer">
 <div class="container">
@@ -83,5 +94,6 @@ Try <a href="https://tonicdev.com/npm/d3-quant">d3-quant</a> in your browser.</p
 </div><script src='/require.js' type='application/javascript'></script>
 <script src='/giotto-dev.js' type='application/javascript'></script>
 <script src='/giottojs.min.js' type='application/javascript'></script>
+<script src='/examples/navbar/script.js' type='application/javascript'></script>
 </body>
 </html>

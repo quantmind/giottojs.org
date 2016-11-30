@@ -100,44 +100,37 @@ var fullpage = {
 
 var highlight = {
     create: function create(expression) {
-        return expression;
+        return expression || 'true';
     },
     refresh: function refresh() {
         var el = this.el;
 
-        require(['highlight'], function () {
-            highlight$1(el);
+        require(['/highlight.js'], function (hljs) {
+            highlight$1(hljs, el);
         });
     }
 };
 
-function highlight$1(elem) {
-    d3$3.select(elem).selectAll('code').selectAll(highlightBlock);
-    d3$3.select(elem).selectAll('.highlight pre').selectAll(highlightSphinx);
-}
+function highlight$1(hljs, elem) {
+    d3$3.select(elem).selectAll('code').selectAll(function () {
+        if (this.parentNode.tagName === 'PRE') {
+            hljs.highlightBlock(this);
+            d3$3.select(this.parentNode).classed('hljs', true);
+        } else {
+            d3$3.select(this).classed('hljs inline', true);
+        }
+    });
 
-function highlightBlock() {
-    var elem = d3$3.select(this),
-        parent = elem.parent();
+    d3$3.select(elem).selectAll('.highlight pre').selectAll(function () {
+        var div = this.parentNode,
+            parent = div ? div.parentNode : null;
 
-    parent.classed('hljs', true);
-    if (parent.tagName === 'PRE') {
-        d3$3.window.hljs.highlightBlock(this);
-        parent.classed('hljs', true);
-    } else {
-        elem.classed('hljs inline', true);
-    }
-}
+        d3$3.select(this).classed('hljs', true);
 
-function highlightSphinx() {
-    var elem = d3$3.select(this),
-        div = elem.parent(),
-        parent = div.parent().node();
+        if (parent && parent.className.substring(0, 10) === 'highlight-') d3$3.select(div).classed('language-' + parent.className.substring(10), true);
 
-    elem.classed('hljs', true);
-
-    if (parent && parent.className.substring(0, 10) === 'highlight-') div.classed('language-' + parent.className.substring(10), true);
-    d3$3.window.hljs.highlightBlock(this);
+        hljs.highlightBlock(this);
+    });
 }
 
 var directives = {

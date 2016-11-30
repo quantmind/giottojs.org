@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html data-debug='false' lang='en' prefix='og: http://ogp.me/ns#'>
 <head>
-<title>Simple live clock</title>
+<title>Area Chart</title>
 <meta charset='utf-8'>
 <meta content='IE=edge' http-equiv='X-UA-Compatible'>
 <meta content='width=device-width, initial-scale=1' name='viewport'>
 <meta content='#ffffff' name='msapplication-TileColor'>
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
-<meta content='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJMT0NBTEUiOiJlbl9HQiIsImx1eF92ZXJzaW9uIjoiMC44LjEiLCJEQVRFVElNRV9GT1JNQVQiOiJkIE1NTSB5LCBoOm1tOnNzIGEiLCJNRURJQV9VUkwiOiIvbWVkaWEvIiwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwiTUlOSUZJRURfTUVESUEiOnRydWUsIkNPUFlSSUdIVCI6Ikx1eCIsIkFQSV9VUkwiOiIvYXBpIiwicGFnZSI6eyJib2R5X2xlbmd0aCI6NTEsImdyb3VwIjoiZXhhbXBsZXMiLCJzbHVnIjoiY2xvY2siLCJwYXRoIjoiL2V4YW1wbGVzL2Nsb2NrIiwiYXBpX3VybCI6Imh0dHBzOi8vZ2lvdHRvanMub3JnL2FwaS9jb250ZW50cy9leGFtcGxlcy9jbG9jayIsInRpdGxlIjoiU2ltcGxlIGxpdmUgY2xvY2sifSwiZGVidWciOmZhbHNlLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIn0.DeJwUX4D4OfpHWV5JqY7nA_Os_LjnGhU8bv_9qMfjhA' name='html-context'>
+<meta content='GiottoJS supports area charts for both svg and canvas elements' name='description'>
+<meta content='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJMT0NBTEUiOiJlbl9HQiIsImx1eF92ZXJzaW9uIjoiMC44LjEiLCJEQVRFVElNRV9GT1JNQVQiOiJkIE1NTSB5LCBoOm1tOnNzIGEiLCJNRURJQV9VUkwiOiIvbWVkaWEvIiwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwiTUlOSUZJRURfTUVESUEiOnRydWUsIkNPUFlSSUdIVCI6Ikx1eCIsIkFQSV9VUkwiOiIvYXBpIiwicGFnZSI6eyJib2R5X2xlbmd0aCI6Mzk5LCJkZXNjcmlwdGlvbiI6Ikdpb3R0b0pTIHN1cHBvcnRzIGFyZWEgY2hhcnRzIGZvciBib3RoIHN2ZyBhbmQgY2FudmFzIGVsZW1lbnRzIiwiZ3JvdXAiOiJleGFtcGxlcyIsInNsdWciOiJhcmVhIiwicGF0aCI6Ii9leGFtcGxlcy9hcmVhIiwiYXBpX3VybCI6Imh0dHBzOi8vZ2lvdHRvanMub3JnL2FwaS9jb250ZW50cy9leGFtcGxlcy9hcmVhIiwidGl0bGUiOiJBcmVhIENoYXJ0In0sImRlYnVnIjpmYWxzZSwiQVBQX05BTUUiOiJHaW90dG9KcyJ9.3NW1SSXvoozage_5T-Klcglmx-pXXO5dgelAUeMFFpw' name='html-context'>
 <meta content='website' property='og:type'>
-<meta content='https://giottojs.org/examples/clock' property='og:url'>
-<meta content='Simple live clock' property='og:title'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' property='og:description'>
+<meta content='https://giottojs.org/examples/area' property='og:url'>
+<meta content='Area Chart' property='og:title'>
+<meta content='GiottoJS supports area charts for both svg and canvas elements' property='og:description'>
 <meta content='en_GB' property='og:locale'>
 <meta content='GiottoJs' property='og:site_name'>
 <meta content='https://giottojs.org/giotto-banner.png' property='og:image'>
 <meta content='summary' name='twitter:card'>
 <meta content='@quantmind' name='twitter:site'>
-<meta content='Simple live clock' name='twitter:title'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='twitter:description'>
+<meta content='Area Chart' name='twitter:title'>
+<meta content='GiottoJS supports area charts for both svg and canvas elements' name='twitter:description'>
 <meta content='https://giottojs.org/giotto-banner.png' name='twitter:image'>
-<link href='https://giottojs.org/examples/clock' rel='canonical'>
+<link href='https://giottojs.org/examples/area' rel='canonical'>
 <link href='/giottojs-default.css' rel='stylesheet' type='text/css'>
 <link href='/icons/apple-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
 <link href='/icons/apple-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
@@ -58,10 +58,19 @@
     </div>
     <div class="row">
         <div class="col-sm-12" lux-highlight>
-            <h2>Simple live clock</h2>
-            <section id="clock">
-    <clock></clock>
-</section>
+            <h2>Area Chart</h2>
+            <div class="row" d3-fluid='giotto.json'>
+    <div class="col-sm-10">
+        <div data-aspect-ratio="2:1">
+            <d3paper></d3paper>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-default" type="submit" d3-click="vm.randomize()">Randomize</button>
+    </div>
+</div>
+
+<p>Area charts are enabled by adding <code>area</code> to the <code>draw</code> list.</p>
         </div>
     </div>
 </div>
@@ -80,6 +89,5 @@
     </div>
 </div><script src='/latest/giotto.min.js' type='application/javascript'></script>
 <script src='/giottojs.min.js' type='application/javascript'></script>
-<script src='/examples/clock/script.js' type='application/javascript'></script>
 </body>
 </html>

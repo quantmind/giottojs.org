@@ -1,5 +1,5 @@
 title: Simple live clock
-requirejs: /giottojs/examples/clock/script.js
+requirejs: /examples/clock/script.js
 
 
 <section id="clock">

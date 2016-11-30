@@ -5,7 +5,7 @@ DESCRIPTION = ('GiottoJS is a javascript visualization library built on '
                'It is designed to visualize both SVG and Canvas elements '
                'with a simple API. AngularJS integration')
 AUTHENTICATION_BACKENDS = ['lux.core:SimpleBackend']
-CONTENT_REPO = os.path.dirname(__file__)
+CONTENT_REPO = os.path.dirname(os.path.dirname(__file__))
 API_URL = '/api'
 APP_NAME = 'GiottoJs'
 HTML_TITLE = 'GiottoJs'
@@ -38,13 +38,16 @@ CONTENT_GROUPS = {
     "context": {}
 }
 
+
 if os.environ.get('GIOTTO_ENV') == 'dev':
     HTML_BODY_SCRIPTS = [
+        '/require.js',
         '/giotto-dev.js',
         '/giottojs'
     ]
 else:
     HTML_BODY_SCRIPTS = [
+        '/require.js',
         '/latest/giotto',
         '/giottojs'
     ]

@@ -2,7 +2,7 @@
 var clock = {
 
     render: function () {
-        var format = giotto.timeFormat("%B %d, %H:%M:%S"),
+        var format = d3.timeFormat("%B %d, %H:%M:%S"),
             el = this.createElement('h1'),
             self = this;
 
@@ -10,7 +10,7 @@ var clock = {
             var dt = new Date(),
                 next = 1000 - dt.getMilliseconds();
             el.text(format(dt));
-            self.timer = giotto.timeout(show, next);
+            self.timer = d3.timeout(show, next);
         }
 
         show();
@@ -24,7 +24,7 @@ var clock = {
 };
 
 
-giotto.view({
+d3.view({
     components: {
         clock: clock
     }

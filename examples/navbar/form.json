@@ -1,0 +1,10 @@
+{
+    "children": [
+        {
+            "type": "radio",
+            "name": "theme",
+            "label": "Your name",
+            "d3-on-click": "navbar.$set('theme', theme)"
+        }
+    ]
+}

@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html data-debug='false' lang='en' prefix='og: http://ogp.me/ns#'>
 <head>
-<title>Simple live clock</title>
+<title>Dynamic forms</title>
 <meta charset='utf-8'>
 <meta content='IE=edge' http-equiv='X-UA-Compatible'>
 <meta content='width=device-width, initial-scale=1' name='viewport'>
 <meta content='#ffffff' name='msapplication-TileColor'>
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
-<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNRURJQV9VUkwiOiIvbWVkaWEvIiwiTUlOSUZJRURfTUVESUEiOnRydWUsImx1eF92ZXJzaW9uIjoiMC44LjIuZGV2MjAxNjEyMDIxMjAyMDAiLCJBUElfVVJMIjoiL2FwaSIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsInBhZ2UiOnsicGF0aCI6Ii9leGFtcGxlcy9jbG9jayIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvZXhhbXBsZXMvY2xvY2siLCJ0aXRsZSI6IlNpbXBsZSBsaXZlIGNsb2NrIiwiZ3JvdXAiOiJleGFtcGxlcyIsImJvZHlfbGVuZ3RoIjo1MSwic2x1ZyI6ImNsb2NrIn0sIkxPQ0FMRSI6ImVuX0dCIiwiQ09QWVJJR0hUIjoiTHV4IiwiQVBQX05BTUUiOiJHaW90dG9KcyIsImRlYnVnIjpmYWxzZSwiREFURV9GT1JNQVQiOiJkIE1NTSB5In0.-p-YTltRQIlG24LPl3MfuY5__yV3GcwHfxlMAME2eYg' name='html-context'>
+<meta content='Create forms from JSON schema with built in validation' name='description'>
+<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNRURJQV9VUkwiOiIvbWVkaWEvIiwiTUlOSUZJRURfTUVESUEiOnRydWUsImx1eF92ZXJzaW9uIjoiMC44LjIuZGV2MjAxNjEyMDIxMjAyMDAiLCJBUElfVVJMIjoiL2FwaSIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsInBhZ2UiOnsiY2F0ZWdvcnkiOiJkMy12aWV3IiwicGF0aCI6Ii9leGFtcGxlcy9mb3JtIiwiYXBpX3VybCI6Imh0dHBzOi8vZ2lvdHRvanMub3JnL2FwaS9jb250ZW50cy9leGFtcGxlcy9mb3JtIiwiZGVzY3JpcHRpb24iOiJDcmVhdGUgZm9ybXMgZnJvbSBKU09OIHNjaGVtYSB3aXRoIGJ1aWx0IGluIHZhbGlkYXRpb24iLCJ0aXRsZSI6IkR5bmFtaWMgZm9ybXMiLCJncm91cCI6ImV4YW1wbGVzIiwiYm9keV9sZW5ndGgiOjkyOSwic2x1ZyI6ImZvcm0ifSwiTE9DQUxFIjoiZW5fR0IiLCJDT1BZUklHSFQiOiJMdXgiLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIiwiZGVidWciOmZhbHNlLCJEQVRFX0ZPUk1BVCI6ImQgTU1NIHkifQ.058KWoOwyapj10RlbOWx5F6blq_zopszDOunr0OmZ7Q' name='html-context'>
 <meta content='website' property='og:type'>
-<meta content='https://giottojs.org/examples/clock' property='og:url'>
-<meta content='Simple live clock' property='og:title'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' property='og:description'>
+<meta content='https://giottojs.org/examples/form' property='og:url'>
+<meta content='Dynamic forms' property='og:title'>
+<meta content='Create forms from JSON schema with built in validation' property='og:description'>
 <meta content='en_GB' property='og:locale'>
 <meta content='GiottoJs' property='og:site_name'>
 <meta content='https://giottojs.org/giotto-banner.png' property='og:image'>
 <meta content='summary' name='twitter:card'>
 <meta content='@quantmind' name='twitter:site'>
-<meta content='Simple live clock' name='twitter:title'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='twitter:description'>
+<meta content='Dynamic forms' name='twitter:title'>
+<meta content='Create forms from JSON schema with built in validation' name='twitter:description'>
 <meta content='https://giottojs.org/giotto-banner.png' name='twitter:image'>
-<link href='https://giottojs.org/examples/clock' rel='canonical'>
+<link href='https://giottojs.org/examples/form' rel='canonical'>
 <link href='/giottojs-default.css' rel='stylesheet' type='text/css'>
 <link href='/icons/apple-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
 <link href='/icons/apple-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
@@ -46,8 +46,8 @@
 <div id="page">
     <navbar d3-model="mainNavbar" brand-height="60"></navbar>
     <div class="jumbotron jumbotron-fluid pt110 text-xs-center">
-    <h1 class="display-3">Simple live clock</h1>
-    <p class="lead"></p>
+    <h1 class="display-3">Dynamic forms</h1>
+    <p class="lead">Create forms from JSON schema with built in validation</p>
 </div>
 <div id="page-main" class="container">
     <div class="row page-header">
@@ -64,9 +64,35 @@
     </div>
     <div class="row">
         <div class="col-sm-12" d3-highlight>
-            <section id="clock">
-    <clock></clock>
-</section>
+            <div id="page" class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="mx-auto mw400">
+                <h2 class="text-xs-center">From object</h2>
+                <d3form json="$simpleform"></d3form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="mx-auto" style="max-width: 400px">
+                <h2 class="text-xs-center">From url</h2>
+                <d3form json="/examples/form/form.json"></d3form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p><br></p>
+
+<p>Create dynamic forms from <a href="/examples/form/form.json">JSON Schema</a> with
+client side validation.</p>
+
+<pre><code class="html">&lt;d3form json=&quot;/examples/form/form.json&quot;&gt;&lt;/d3form&gt;
+</code></pre>
+
+<p>You can style with bootstrap v4.0 too:</p>
+
+<pre><code class="javascript">vm.use(d3.viewForms).use(d3.viewBootstrapForms).mount('#page');
+</code></pre>
         </div>
     </div>
 </div>
@@ -83,6 +109,6 @@
 </div>
 </div>
     </div>
-</div><script src='/examples/clock/script.js' type='application/javascript'></script>
+</div><script src='/examples/form/script.js' type='application/javascript'></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 title: Markdown Editor
 description: Dead simple markdown editor with d3-view
+category: d3-view
 requirejs: /examples/editor/script.js
 
 

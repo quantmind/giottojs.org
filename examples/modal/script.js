@@ -1,4 +1,4 @@
-(function () {
+require(['d3', 'giottojs'], function (d3) {
 
     var modalTpl = `<div class="modal fade" d3-class="show ? 'in': null" tabindex="-1" role="dialog" aria-hidden="true" d3-show="show">
   <div class="modal-dialog" role="document">
@@ -44,4 +44,4 @@
         }
     }).mount('#page');
 
-}());
+});

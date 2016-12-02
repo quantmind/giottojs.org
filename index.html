@@ -9,7 +9,7 @@
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
 <meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
-<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJEQVRFX0ZPUk1BVCI6ImQgTU1NIHkiLCJNRURJQV9VUkwiOiIvbWVkaWEvIiwibHV4X3ZlcnNpb24iOiIwLjguMSIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsIkFQSV9VUkwiOiIvYXBpIiwiTE9DQUxFIjoiZW5fR0IiLCJwYWdlIjp7Imdyb3VwIjoic2l0ZSIsImJvZHlfbGVuZ3RoIjoyODQsInBhdGgiOiIiLCJzbHVnIjoiaW5kZXgiLCJib2R5X3RlbXBsYXRlIjoiaG9tZS5odG1sIiwiYXBpX3VybCI6Imh0dHBzOi8vZ2lvdHRvanMub3JnL2FwaS9jb250ZW50cy9zaXRlL2luZGV4In0sIkNPUFlSSUdIVCI6Ikx1eCIsImRlYnVnIjpmYWxzZSwiQVBQX05BTUUiOiJHaW90dG9KcyIsIk1JTklGSUVEX01FRElBIjp0cnVlfQ.77QsleXmTzLj9IGi2mHB5dTnNVEJy6R6NCTfa2ZgZjo' name='html-context'>
+<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNRURJQV9VUkwiOiIvbWVkaWEvIiwiTUlOSUZJRURfTUVESUEiOnRydWUsImx1eF92ZXJzaW9uIjoiMC44LjIuZGV2MjAxNjEyMDIxMjAyMDAiLCJBUElfVVJMIjoiL2FwaSIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsInBhZ2UiOnsicGF0aCI6IiIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvc2l0ZS9pbmRleCIsImJvZHlfdGVtcGxhdGUiOiJob21lLmh0bWwiLCJncm91cCI6InNpdGUiLCJib2R5X2xlbmd0aCI6Mjg0LCJzbHVnIjoiaW5kZXgifSwiTE9DQUxFIjoiZW5fR0IiLCJDT1BZUklHSFQiOiJMdXgiLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIiwiZGVidWciOmZhbHNlLCJEQVRFX0ZPUk1BVCI6ImQgTU1NIHkifQ.jxId-6TGwNkQVG5gYyuN1E3YBUAB_aE_Hs7botRWpKI' name='html-context'>
 <meta content='website' property='og:type'>
 <meta content='https://giottojs.org/' property='og:url'>
 <meta content='GiottoJs' property='og:title'>
@@ -38,15 +38,17 @@
 <link href='/icons/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
 <link href='/icons/android-icon-192x192.png' rel='icon' sizes='192x192' type='image/png'>
 <link href='/icons/manifest.json' rel='manifest'>
+<script src='/require.js' type='application/javascript'></script>
+<script src='/giotto-dev.js' type='application/javascript'></script>
+<script src='/giottojs.min.js' type='application/javascript'></script>
 </head>
 <body>
-<div id="l-page">
-    <div id="l-page-first"></div>
+<div id="page">
     <navbar d3-model="mainNavbar" brand-height="60"></navbar>
-    <main id="page-header" class="page-header landing pt80">
+    <main id="page-header" class="page-header landing pt80" d3-fullpage>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-xs-center" full-page>
+            <div class="col-sm-12 text-xs-center">
                 <div class="mx-auto" style="max-width: 400px">
                     <img id="giotto-logo" src="/giotto.svg" alt="GiottoJS" class="img-fluid">
                 </div>
@@ -115,8 +117,5 @@ You can fork the code add the feature you need and send us your patch.</p>
 </div>
 </div>
     </div>
-</div><script src='/require.js' type='application/javascript'></script>
-<script src='/giotto-dev.js' type='application/javascript'></script>
-<script src='/giottojs.min.js' type='application/javascript'></script>
-</body>
+</div></body>
 </html>

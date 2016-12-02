@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html data-debug='false' lang='en' prefix='og: http://ogp.me/ns#'>
 <head>
-<title>Simple live clock</title>
+<title>Modal component</title>
 <meta charset='utf-8'>
 <meta content='IE=edge' http-equiv='X-UA-Compatible'>
 <meta content='width=device-width, initial-scale=1' name='viewport'>
 <meta content='#ffffff' name='msapplication-TileColor'>
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
-<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNRURJQV9VUkwiOiIvbWVkaWEvIiwiTUlOSUZJRURfTUVESUEiOnRydWUsImx1eF92ZXJzaW9uIjoiMC44LjIuZGV2MjAxNjEyMDIxMjAyMDAiLCJBUElfVVJMIjoiL2FwaSIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsInBhZ2UiOnsicGF0aCI6Ii9leGFtcGxlcy9jbG9jayIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvZXhhbXBsZXMvY2xvY2siLCJ0aXRsZSI6IlNpbXBsZSBsaXZlIGNsb2NrIiwiZ3JvdXAiOiJleGFtcGxlcyIsImJvZHlfbGVuZ3RoIjo1MSwic2x1ZyI6ImNsb2NrIn0sIkxPQ0FMRSI6ImVuX0dCIiwiQ09QWVJJR0hUIjoiTHV4IiwiQVBQX05BTUUiOiJHaW90dG9KcyIsImRlYnVnIjpmYWxzZSwiREFURV9GT1JNQVQiOiJkIE1NTSB5In0.-p-YTltRQIlG24LPl3MfuY5__yV3GcwHfxlMAME2eYg' name='html-context'>
+<meta content='A bootstrap modal component with d3-view' name='description'>
+<meta content='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNRURJQV9VUkwiOiIvbWVkaWEvIiwiTUlOSUZJRURfTUVESUEiOnRydWUsImx1eF92ZXJzaW9uIjoiMC44LjIuZGV2MjAxNjEyMDIxMjAyMDAiLCJBUElfVVJMIjoiL2FwaSIsIkRBVEVUSU1FX0ZPUk1BVCI6ImQgTU1NIHksIGg6bW06c3MgYSIsInBhZ2UiOnsicGF0aCI6Ii9leGFtcGxlcy9tb2RhbCIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvZXhhbXBsZXMvbW9kYWwiLCJkZXNjcmlwdGlvbiI6IkEgYm9vdHN0cmFwIG1vZGFsIGNvbXBvbmVudCB3aXRoIGQzLXZpZXciLCJ0aXRsZSI6Ik1vZGFsIGNvbXBvbmVudCIsImdyb3VwIjoiZXhhbXBsZXMiLCJib2R5X2xlbmd0aCI6NDcyLCJzbHVnIjoibW9kYWwifSwiTE9DQUxFIjoiZW5fR0IiLCJDT1BZUklHSFQiOiJMdXgiLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIiwiZGVidWciOmZhbHNlLCJEQVRFX0ZPUk1BVCI6ImQgTU1NIHkifQ.fyqj8fWuBc92JenwIJLjz7W8YsvGsAaIw5n9pqk8nGM' name='html-context'>
 <meta content='website' property='og:type'>
-<meta content='https://giottojs.org/examples/clock' property='og:url'>
-<meta content='Simple live clock' property='og:title'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' property='og:description'>
+<meta content='https://giottojs.org/examples/modal' property='og:url'>
+<meta content='Modal component' property='og:title'>
+<meta content='A bootstrap modal component with d3-view' property='og:description'>
 <meta content='en_GB' property='og:locale'>
 <meta content='GiottoJs' property='og:site_name'>
 <meta content='https://giottojs.org/giotto-banner.png' property='og:image'>
 <meta content='summary' name='twitter:card'>
 <meta content='@quantmind' name='twitter:site'>
-<meta content='Simple live clock' name='twitter:title'>
-<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='twitter:description'>
+<meta content='Modal component' name='twitter:title'>
+<meta content='A bootstrap modal component with d3-view' name='twitter:description'>
 <meta content='https://giottojs.org/giotto-banner.png' name='twitter:image'>
-<link href='https://giottojs.org/examples/clock' rel='canonical'>
+<link href='https://giottojs.org/examples/modal' rel='canonical'>
 <link href='/giottojs-default.css' rel='stylesheet' type='text/css'>
 <link href='/icons/apple-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
 <link href='/icons/apple-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
@@ -46,8 +46,8 @@
 <div id="page">
     <navbar d3-model="mainNavbar" brand-height="60"></navbar>
     <div class="jumbotron jumbotron-fluid pt110 text-xs-center">
-    <h1 class="display-3">Simple live clock</h1>
-    <p class="lead"></p>
+    <h1 class="display-3">Modal component</h1>
+    <p class="lead">A bootstrap modal component with d3-view</p>
 </div>
 <div id="page-main" class="container">
     <div class="row page-header">
@@ -64,9 +64,16 @@
     </div>
     <div class="row">
         <div class="col-sm-12" d3-highlight>
-            <section id="clock">
-    <clock></clock>
-</section>
+            <div class="mx-auto mw500">
+    <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.
+    </p>
+    <a class="btn btn-primary" href="#" role="button" d3-on-click="testModal.$show()">Link</a>
+    <d3modal d3-model="testModal">
+        <div d3-once="body">
+            You can use the ``d3-once`` directive to initialise component model attributes without one-way binding.
+        </div>
+    </d3modal>
+</div>
         </div>
     </div>
 </div>
@@ -83,6 +90,6 @@
 </div>
 </div>
     </div>
-</div><script src='/examples/clock/script.js' type='application/javascript'></script>
+</div><script src='/examples/form/script.js' type='application/javascript'></script>
 </body>
 </html>

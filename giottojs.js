@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('d3'), require('d3'), require('d3'), require('d3')) :
-    typeof define === 'function' && define.amd ? define('giottojs', ['d3', 'd3', 'd3', 'd3'], factory) :
-    (factory(global.d3,global.d3$1,global.d3$2,global.d3$3));
-}(this, (function (d3,d3$1,d3$2,d3$3) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3'), require('d3'), require('d3'), require('d3')) :
+    typeof define === 'function' && define.amd ? define('giottojs', ['exports', 'd3', 'd3', 'd3', 'd3'], factory) :
+    (factory((global.giottojs = global.giottojs || {}),global.d3,global.d3$1,global.d3$2,global.d3$3));
+}(this, (function (exports,d3,d3$1,d3$2,d3$3) { 'use strict';
 
 var navbarTpl = "<nav class=\"navbar\" d3-class=\"[theme, ['navbar-fixed-top', fixedTop]]\">\n    <a class=\"navbar-brand\" d3-if=\"brand.title || brand.image\" d3-attr-href=\"brand.href || '#'\" d3-html=\"brand.title\">\n        <img d3-if=\"brand.image\" d3-attr-src=\"brand.image\" d3-attr-alt=\"brand.title\">\n    </a>\n    <ul class=\"nav navbar-nav\">\n        <li d3-for=\"item in items\" class=\"nav-item\" d3-class=\"item.class\" d3-active>\n            <a class=\"nav-link\"\n                d3-attr-href=\"item.href || '#'\"\n                d3-html=\"item.title\"\n                d3-if=\"item.show ? item.show() : true\"\n                d3-on-click=\"item.click ? item.click() : null\"></a>\n        </li>\n    </ul>\n</nav>";
 
@@ -90,11 +90,11 @@ var components = {
 
 var fullpage = {
     create: function create(expression) {
-        return expression;
+        return expression || "true";
     },
     refresh: function refresh() {
-        var height = d3$3.window(this.el).style('height');
-        this.el.style('min-height', height);
+        var height = d3$3.window(this.el).innerHeight;
+        this.sel.style('min-height', height + 'px');
     }
 };
 
@@ -149,7 +149,7 @@ var modelApp = function () {
                 href: '/',
                 image: '/giotto-banner.svg'
             },
-            theme: 'navbar-dark bg-inverse',
+            theme: 'navbar-dark',
             items: [{
                 href: '/examples',
                 title: 'examples',
@@ -175,4 +175,10 @@ function start() {
     vm.use(components).use(directives).mount('body');
 }
 
+exports.directives = directives;
+exports.components = components;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
 })));
+require(['giottojs']);

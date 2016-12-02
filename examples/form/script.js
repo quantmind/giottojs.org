@@ -1,4 +1,4 @@
-(function () {
+require(['d3', 'giottojs'], function (d3) {
 
     var simpleform = {
         children: [
@@ -34,4 +34,4 @@
 
     vm.use(d3.viewForms).use(d3.viewBootstrapForms).mount('#page');
 
-}());
+});

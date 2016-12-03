@@ -82,8 +82,8 @@ HTML_META = [
 ]
 
 OAUTH_PROVIDERS = {
-    'google': {'analytics': {'id': 'UA-54439804-4'}},
-    'twitter': {'site': '@quantmind'}
+    'google': {'analytics_id': 'UA-54439804-4'},
+    'twitter': {'site': '@giottojs_org'}
 }
 
 CONTENT_LINKS = {

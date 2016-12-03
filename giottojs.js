@@ -116,9 +116,11 @@ function highlight$1(hljs, elem) {
         if (this.parentNode.tagName === 'PRE') {
             hljs.highlightBlock(this);
             d3$3.select(this.parentNode).classed('hljs', true);
-        } else {
-            d3$3.select(this).classed('hljs inline', true);
         }
+        // Don't modify inlines
+        //else {
+        //    select(this).classed('hljs inline', true);
+        //}
     });
 
     d3$3.select(elem).selectAll('.highlight pre').selectAll(function () {

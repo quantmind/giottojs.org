@@ -1,25 +1,21 @@
-title: GiottoJS - Installation
+title: Download & Install
 
+Gitto is an extended [d3][] bundle which includes all d3 standard libraries with the addition of
 
-If you use [NPM](https://www.npmjs.com/package/d3-quant),
-``npm install d3-quant``. Otherwise, download the
-[latest release](https://github.com/quantmind/d3-quant/releases/latest).
-The released bundle supports AMD, CommonJS, and vanilla environments.
-Create a custom build using [Rollup](https://github.com/rollup/rollup) or
-your preferred bundler.
-You can also load directly from https://assets.quantmind.com:
+* [d3-let](/d3-let)
+* [d3-canvas-transition](/d3-canvas-transition)
+* [d3-view](/d3-view)
+* [d3-fluid](/d3-fluid)
+
+If you use [NPM](https://www.npmjs.com/package/giotto), ``npm install giotto``,
+Otherwise, download the [latest release](https://github.com/quantmind/giotto/releases).
+You can also load directly from [giottojs.org](https://giottojs.org),
+as a [standalone library](https://giottojs.org/latest/giotto.js) or
+[unpkg](https://unpkg.com/giotto/).
+AMD, CommonJS, and vanilla environments are supported. In vanilla, a ``d3`` global is exported.
 ```html
-<script src="https://assets.quantmind.com/d3-quant/0.1.0/d3-quant.js"></script>
-<script src="https://assets.quantmind.com/d3-quant/0.1.0/d3-quant.min.js"></script>
+<script src="https://giottojs.org/latest/giotto.js"></script>
+<script src="https://giottojs.org/latest/giotto.min.js"></script>
 ```
-In a vanilla environment, a ``d3_quant`` global is exported.
-Try [d3-quant](https://tonicdev.com/npm/d3-quant) in your browser.
+You can also try [giotto in your browser](https://runkit.com/npm/giotto).
 
-Latest development versions
-
-* [giotto.js](http://quantmind.github.io/giotto/media/giotto/giotto.js)
-* [giotto.min.js](http://quantmind.github.io/giotto/media/giotto/giotto.min.js)
-
-<a href="https://travis-ci.org/quantmind/giotto" target="_self">
-<img src="https://travis-ci.org/quantmind/giotto.svg?branch=master" alt="giotto CI"></a>
-[![Coverage Status](https://img.shields.io/coveralls/quantmind/giotto.svg)](https://coveralls.io/r/quantmind/giotto?branch=master)

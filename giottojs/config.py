@@ -23,6 +23,7 @@ CONTENT_GROUPS = {
         "meta": {
             "priority": 1,
             "body_template": "home.html",
+            "inner_template": "partials/base.html",
             "image": "/giotto-banner.png"
         }
     },

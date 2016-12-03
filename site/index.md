@@ -1,4 +1,4 @@
-template: partials/index.html
+inner_template: partials/index.html
 
 <div class="features container text-center">
 <article>

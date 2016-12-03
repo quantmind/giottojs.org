@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html data-debug='false' lang='en' prefix='og: http://ogp.me/ns#'>
 <head>
-<title>Area Chart</title>
+<title>GiottoJs</title>
 <meta charset='utf-8'>
 <meta content='IE=edge' http-equiv='X-UA-Compatible'>
 <meta content='width=device-width, initial-scale=1' name='viewport'>
 <meta content='#ffffff' name='msapplication-TileColor'>
 <meta content='/icons/ms-icon-144x144.png' name='msapplication-TileImage'>
 <meta content='#ffffff' name='theme-color'>
-<meta content='GiottoJS supports area charts for both svg and canvas elements' name='description'>
-<meta content='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJMT0NBTEUiOiJlbl9HQiIsInBhZ2UiOnsic2x1ZyI6ImFyZWEiLCJncm91cCI6ImV4YW1wbGVzIiwiYm9keV9sZW5ndGgiOjM5OSwicGF0aCI6Ii9leGFtcGxlcy9hcmVhIiwiZGVzY3JpcHRpb24iOiJHaW90dG9KUyBzdXBwb3J0cyBhcmVhIGNoYXJ0cyBmb3IgYm90aCBzdmcgYW5kIGNhbnZhcyBlbGVtZW50cyIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvZXhhbXBsZXMvYXJlYSIsInRpdGxlIjoiQXJlYSBDaGFydCJ9LCJkZWJ1ZyI6ZmFsc2UsIk1JTklGSUVEX01FRElBIjp0cnVlLCJDT1BZUklHSFQiOiJMdXgiLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIiwiREFURVRJTUVfRk9STUFUIjoiZCBNTU0geSwgaDptbTpzcyBhIiwiQVBJX1VSTCI6Ii9hcGkiLCJNRURJQV9VUkwiOiIvbWVkaWEvIiwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwibHV4X3ZlcnNpb24iOiIwLjguMi5kZXYyMDE2MTIwMjEyMDIwMCJ9.6xldeWZTIqGEBbilaEIWMTVN3pOVHtps9EmVtzmtrBw' name='html-context'>
+<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='description'>
+<meta content='noindex, nofollow' name='robots'>
+<meta content='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJMT0NBTEUiOiJlbl9HQiIsInBhZ2UiOnsiZ3JvdXAiOiJzaXRlIiwic2x1ZyI6IjQwNCIsImJvZHlfdGVtcGxhdGUiOiJob21lLmh0bWwiLCJib2R5X2xlbmd0aCI6NTMwLCJwYXRoIjoiLzQwNCIsImFwaV91cmwiOiJodHRwczovL2dpb3R0b2pzLm9yZy9hcGkvY29udGVudHMvc2l0ZS80MDQiLCJpbm5lcl90ZW1wbGF0ZSI6InBhcnRpYWxzL2Jhc2UuaHRtbCJ9LCJkZWJ1ZyI6ZmFsc2UsIk1JTklGSUVEX01FRElBIjp0cnVlLCJDT1BZUklHSFQiOiJMdXgiLCJBUFBfTkFNRSI6Ikdpb3R0b0pzIiwiREFURVRJTUVfRk9STUFUIjoiZCBNTU0geSwgaDptbTpzcyBhIiwiQVBJX1VSTCI6Ii9hcGkiLCJNRURJQV9VUkwiOiIvbWVkaWEvIiwiREFURV9GT1JNQVQiOiJkIE1NTSB5IiwibHV4X3ZlcnNpb24iOiIwLjguMi5kZXYyMDE2MTIwMjEyMDIwMCJ9.Bsro3lwcsCJrx_ZrBcNZUdA8SeFfBPtS8f6gFFExzDk' name='html-context'>
 <meta content='website' property='og:type'>
-<meta content='https://giottojs.org/examples/area' property='og:url'>
-<meta content='Area Chart' property='og:title'>
-<meta content='GiottoJS supports area charts for both svg and canvas elements' property='og:description'>
+<meta content='https://giottojs.org/404' property='og:url'>
+<meta content='GiottoJs' property='og:title'>
+<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' property='og:description'>
 <meta content='en_GB' property='og:locale'>
 <meta content='GiottoJs' property='og:site_name'>
 <meta content='https://giottojs.org/giotto-banner.png' property='og:image'>
 <meta content='summary' name='twitter:card'>
 <meta content='@giottojs_org' name='twitter:site'>
-<meta content='Area Chart' name='twitter:title'>
-<meta content='GiottoJS supports area charts for both svg and canvas elements' name='twitter:description'>
+<meta content='GiottoJs' name='twitter:title'>
+<meta content='GiottoJS is a javascript visualization library built on top of d3js. It is designed to visualize both SVG and Canvas elements with a simple API. AngularJS integration' name='twitter:description'>
 <meta content='https://giottojs.org/giotto-banner.png' name='twitter:image'>
-<link href='https://giottojs.org/examples/area' rel='canonical'>
+<link href='https://giottojs.org/404' rel='canonical'>
 <link href='/giottojs-default.css' rel='stylesheet' type='text/css'>
 <link href='/icons/apple-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
 <link href='/icons/apple-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
@@ -45,37 +46,31 @@
 <body>
 <div id="page">
     <navbar d3-model="mainNavbar" brand-height="60"></navbar>
-    <div class="jumbotron jumbotron-fluid pt110 text-xs-center">
-    <h1 class="display-3">Area Chart</h1>
-    <p class="lead">GiottoJS supports area charts for both svg and canvas elements</p>
-</div>
-<div id="page-main" class="container">
-    <div class="row page-header">
-        <div class="col-sm-6">
-            <breadcrumbs></breadcrumbs>
+    <div id="page-main" class="pt100">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-header">
+                    <h2></h2>
+                </div>
+                <div d3-highlight>
+                    <div id="page-error" class="pt100" d3-fullpage>
+    <div class="error-message-container">
+        <div class="container-fluid error-message">
+            <div class="row">
+                <div class="col-sm-3">
+                    <p>404</p>
+                </div>
+                <div class="col-sm-9">
+                    <p>Sorry, but nothing exists here.</p>
+                    <span>Find something <a href="/examples/">interesting to look</a></span>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6">
-            <ul class="nav nav-pills">
-              <li ng-repeat="style in giottoThemes" ng-class="{active: style.name === currentTheme}" >
-                <a ng-href="?style=" ng-bind="style.title" ng-click="selectTheme($event, style.name)"></a>
-              </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" d3-highlight>
-            <div class="row" d3-fluid='giotto.json'>
-    <div class="col-sm-10">
-        <div data-aspect-ratio="2:1">
-            <d3paper></d3paper>
-        </div>
-    </div>
-    <div class="col-sm-2">
-        <button class="btn btn-default" type="submit" d3-click="vm.randomize()">Randomize</button>
     </div>
 </div>
-
-<p>Area charts are enabled by adding <code>area</code> to the <code>draw</code> list.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

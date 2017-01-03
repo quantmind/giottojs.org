@@ -1,7 +1,6 @@
 title: Dynamic forms
 description: Create forms from JSON schema with built in validation
 category: d3-view
-requirejs: /examples/form/script.js
 
 <div id="page" class="container">
     <div class="row">

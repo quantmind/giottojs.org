@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3'), require('d3'), require('d3'), require('d3')) :
-    typeof define === 'function' && define.amd ? define('giottojs', ['exports', 'd3', 'd3', 'd3', 'd3'], factory) :
-    (factory((global.giottojs = global.giottojs || {}),global.d3,global.d3$1,global.d3$2,global.d3$3));
-}(this, (function (exports,d3,d3$1,d3$2,d3$3) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3'), require('d3'), require('d3'), require('d3'), require('d3')) :
+    typeof define === 'function' && define.amd ? define('giottojs', ['exports', 'd3', 'd3', 'd3', 'd3', 'd3'], factory) :
+    (factory((global.giottojs = global.giottojs || {}),global.d3,global.d3$1,global.d3$2,global.d3$3,global.d3$4));
+}(this, (function (exports,d3,d3$1,d3$2,d3$3,d3$4) { 'use strict';
 
 var navbarTpl = "<nav class=\"navbar\" d3-class=\"[theme, ['navbar-fixed-top', fixedTop]]\">\n    <a class=\"navbar-brand\" d3-if=\"brand.title || brand.image\" d3-attr-href=\"brand.href || '#'\" d3-html=\"brand.title\">\n        <img d3-if=\"brand.image\" d3-attr-src=\"brand.image\" d3-attr-alt=\"brand.title\">\n    </a>\n    <ul class=\"nav navbar-nav\">\n        <li d3-for=\"item in items\" class=\"nav-item\" d3-class=\"item.class\" d3-active>\n            <a class=\"nav-link\"\n                d3-attr-href=\"item.href || '#'\"\n                d3-html=\"item.title\"\n                d3-if=\"item.show ? item.show() : true\"\n                d3-on-click=\"item.click ? item.click() : null\"></a>\n        </li>\n    </ul>\n</nav>";
 
@@ -69,7 +69,7 @@ var grid = {
             self = this;
 
         // grid properties are remote
-        if (d3$2.isString(json)) {
+        if (d3$3.isString(json)) {
             this.fetch(json).then(self.build);
         }
         return container;
@@ -93,7 +93,7 @@ var fullpage = {
         return expression || "true";
     },
     refresh: function refresh() {
-        var height = d3$3.window(this.el).innerHeight;
+        var height = d3$4.window(this.el).innerHeight;
         this.sel.style('min-height', height + 'px');
     }
 };
@@ -112,10 +112,10 @@ var highlight = {
 };
 
 function highlight$1(hljs, elem) {
-    d3$3.select(elem).selectAll('code').selectAll(function () {
+    d3$4.select(elem).selectAll('code').selectAll(function () {
         if (this.parentNode.tagName === 'PRE') {
             hljs.highlightBlock(this);
-            d3$3.select(this.parentNode).classed('hljs', true);
+            d3$4.select(this.parentNode).classed('hljs', true);
         }
         // Don't modify inlines
         //else {
@@ -123,13 +123,13 @@ function highlight$1(hljs, elem) {
         //}
     });
 
-    d3$3.select(elem).selectAll('.highlight pre').selectAll(function () {
+    d3$4.select(elem).selectAll('.highlight pre').selectAll(function () {
         var div = this.parentNode,
             parent = div ? div.parentNode : null;
 
-        d3$3.select(this).classed('hljs', true);
+        d3$4.select(this).classed('hljs', true);
 
-        if (parent && parent.className.substring(0, 10) === 'highlight-') d3$3.select(div).classed('language-' + parent.className.substring(10), true);
+        if (parent && parent.className.substring(0, 10) === 'highlight-') d3$4.select(div).classed('language-' + parent.className.substring(10), true);
 
         hljs.highlightBlock(this);
     });
@@ -142,9 +142,11 @@ var directives = {
     }
 };
 
+// model for the giottojs application
 var modelApp = function () {
 
     var model = {
+        d3: d3$1,
 
         mainNavbar: {
             brand: {
@@ -174,7 +176,7 @@ function start() {
     });
     //
     // Mount the UI
-    vm.use(components).use(directives).mount('body');
+    vm.use(components).use(directives).use(d3$1.fluidPlugin).mount('body');
 }
 
 exports.directives = directives;

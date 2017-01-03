@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<title>Canvas Tests</title>
+<link href='../giottojs-default.css' rel='stylesheet' type='text/css'>
+<script src='https://d3js.org/d3.v4.js' type='application/javascript'></script>
+<script src='./d3-canvas-transition.js' type='application/javascript'></script>
+</head>
+<body>
+    <div id="main" class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="display-2">D3-canvas Tests</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Simple bar chart</h2>
+                <canvas id="test1" width="400" height="400"></canvas>
+            </div>
+            <div class="col-md-6">
+                <h2>Concurrent Transitions</h2>
+                <canvas id="test2" width="400" height="400"></canvas>
+            </div>
+            <div class="col-sm-12">
+                <h2>Chained Transitions</h2>
+                <canvas id="test3" width="960" height="500"></canvas>
+            </div>
+            <div class="col-sm-12">
+                <h2>Text Transition</h2>
+                <canvas id="test4" width="960" height="500"></canvas>
+            </div>
+        </div>
+    </div>
+<script src='./simple-bar-chart.js' type='application/javascript'></script>
+<script src='./concurrent-transitions.js' type='application/javascript'></script>
+<script src='./chained-transitions.js' type='application/javascript'></script>
+<script src='./text-transition.js' type='application/javascript'></script>
+</body>

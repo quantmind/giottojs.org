@@ -15,7 +15,8 @@
     },
     "example": {
         "margin": 40,
-        "plot": "area",
+        "plots": "scatter",
+        "type": "canvas",
         "axes": {
             "x": true,
             "y": true

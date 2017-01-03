@@ -92,4 +92,6 @@ CONTENT_LINKS = {
     'd3js': 'https://d3js.org/'
 }
 
+CACHE_SERVER = 'redis://127.0.0.1:6379/11'
+
 workers = 0

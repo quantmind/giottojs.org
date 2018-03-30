@@ -1,14 +1,139 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-let'), require('d3-dispatch'), require('d3-view'), require('d3-ease'), require('d3-transition'), require('handlebars')) :
-    typeof define === 'function' && define.amd ? define(['exports', 'd3-let', 'd3-dispatch', 'd3-view', 'd3-ease', 'd3-transition', 'handlebars'], factory) :
-    (factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3,global.d3,global.d3,global.handlebars));
-}(this, (function (exports,d3Let,d3Dispatch,d3View,d3Ease,d3Transition,Handlebars) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-dispatch'), require('d3-view'), require('d3-ease'), require('d3-transition'), require('handlebars')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'd3-dispatch', 'd3-view', 'd3-ease', 'd3-transition', 'handlebars'], factory) :
+    (factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3,global.d3,global.handlebars));
+}(this, (function (exports,d3Dispatch,d3View,d3Ease,d3Transition,Handlebars) { 'use strict';
 
     Handlebars = Handlebars && Handlebars.hasOwnProperty('default') ? Handlebars['default'] : Handlebars;
 
     var version = "0.3.0";
 
-    var active = {
+    /*
+    object-assign
+    (c) Sindre Sorhus
+    @license MIT
+    */
+    /* eslint-disable no-unused-vars */
+    var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+    var hasOwnProperty = Object.prototype.hasOwnProperty;
+    var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+    function toObject(val) {
+    	if (val === null || val === undefined) {
+    		throw new TypeError('Object.assign cannot be called with null or undefined');
+    	}
+
+    	return Object(val);
+    }
+
+    function shouldUseNative() {
+    	try {
+    		if (!Object.assign) {
+    			return false;
+    		}
+
+    		// Detect buggy property enumeration order in older V8 versions.
+
+    		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+    		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+    		test1[5] = 'de';
+    		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+    			return false;
+    		}
+
+    		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+    		var test2 = {};
+    		for (var i = 0; i < 10; i++) {
+    			test2['_' + String.fromCharCode(i)] = i;
+    		}
+    		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+    			return test2[n];
+    		});
+    		if (order2.join('') !== '0123456789') {
+    			return false;
+    		}
+
+    		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+    		var test3 = {};
+    		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+    			test3[letter] = letter;
+    		});
+    		if (Object.keys(Object.assign({}, test3)).join('') !==
+    				'abcdefghijklmnopqrst') {
+    			return false;
+    		}
+
+    		return true;
+    	} catch (err) {
+    		// We don't expect any of the above to throw, but better to be safe.
+    		return false;
+    	}
+    }
+
+    var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
+    	var from;
+    	var to = toObject(target);
+    	var symbols;
+
+    	for (var s = 1; s < arguments.length; s++) {
+    		from = Object(arguments[s]);
+
+    		for (var key in from) {
+    			if (hasOwnProperty.call(from, key)) {
+    				to[key] = from[key];
+    			}
+    		}
+
+    		if (getOwnPropertySymbols) {
+    			symbols = getOwnPropertySymbols(from);
+    			for (var i = 0; i < symbols.length; i++) {
+    				if (propIsEnumerable.call(from, symbols[i])) {
+    					to[symbols[i]] = from[symbols[i]];
+    				}
+    			}
+    		}
+    	}
+
+    	return to;
+    };
+
+    const ostring = Object.prototype.toString;
+    const inBrowser = typeof window !== 'undefined' && ostring.call(window) !== '[object Object]';
+
+    const logger = inBrowser ? window.console : console;
+
+    function isObject (value) {
+        return ostring.call(value) === '[object Object]';
+    }
+
+
+    function isString (value) {
+        return ostring.call(value) === '[object String]';
+    }
+
+
+    function isArray (value) {
+        return ostring.call(value) === '[object Array]';
+    }
+
+    function pop (obj, prop) {
+        let value;
+        if (isObject(obj)) {
+            value = obj[prop];
+            delete obj[prop];
+            return value;
+        } else if (isArray(obj)) {
+            var index = +prop;
+            if (index === index) return obj.splice(index, 1)[0];
+            value = obj[prop];
+            delete obj[prop];
+            return value;
+        }
+    }
+
+    // a resolved promise
+
+    var viewActive = {
 
         //
         // Listen for changes to the currentUrl attribute
@@ -92,7 +217,7 @@
     };
 
 
-    var index = {
+    var viewAlert = {
 
         install (vm) {
             vm.addComponent('alerts', alertMessages);
@@ -103,7 +228,7 @@
 
     function addMessage (data) {
         if (!data) return false;
-        if (d3Let.isString(data)) data = {message: data};
+        if (isString(data)) data = {message: data};
         if (data.message) {
             if (!data.level) data.level = 'info';
             var key = messageKey(data),
@@ -134,117 +259,6 @@
     }
 
     const
-        sep = new RegExp('[^,]*$'),
-        rep = new RegExp('^.+,*|');
-
-
-    const multiple = {
-        filter (text, input) {
-            return window.Awesomplete.FILTER_CONTAINS(text, input.match(sep)[0]);
-        },
-
-        item (text, input) {
-            return window.Awesomplete.ITEM(text, input.match(sep)[0]);
-        },
-
-        replace (text) {
-            var before = this.input.value.match(rep)[0];
-            this.input.value = before + text + ", ";
-        }
-    };
-
-
-    var index$1 = {
-
-        refresh (model, awe) {
-            if (!this.awe) {
-                var self = this;
-                this.awe = true;
-                awe = awe || {};
-                this.htmlAttribute(awe, 'multiple');
-
-                this.providers.require('awesomplete').catch(() => {
-                    if (!window.Awesomplete)
-                        return self.logError(`Could not load awesomplete`);
-                    self.build(model, awe);
-                });
-            }
-        },
-
-        build (model, awe) {
-            var self = this,
-                cfg = self.getConfig(awe);
-
-            if (awe.url) {
-                this.json(awe.url).then(response => {
-                    var data = response.data;
-                    model.$emit('autoCompleteData', data);
-                    cfg.list = data;
-                    self.awe = new window.Awesomplete(self.el, cfg);
-                });
-            } else {
-                self.awe = new window.Awesomplete(self.el, cfg);
-            }
-        },
-
-        getConfig (awe) {
-            var cfg = {
-                minChars: awe.minChars || 2,
-            };
-            if (awe.label || awe.value) {
-                if (!awe.label) awe.label = 'label';
-                if (!awe.value) awe.value = 'value';
-
-                cfg.data = function (d) {
-                    return {
-                        label: d[awe.label],
-                        value: d[awe.value]
-                    };
-                };
-            }
-            if (awe.multiple) d3Let.assign(cfg, multiple);
-            return cfg;
-        },
-
-        htmlAttribute (o, name) {
-            if (o[name] === undefined) {
-                var value = this.sel.attr(`data-${name}`);
-                if (value !== undefined) o[name] = value === null ? false : value || true;
-            }
-        }
-    };
-
-    var index$2 = {
-        props: {
-            title: '',
-            titleTag: 'h5',
-            image: null,
-            imageHeight: null
-        },
-
-        render (props, attrs, el) {
-            var sel = this.select(el),
-                body = sel.text(),
-                card = this.createElement('div').classed('card', true);
-
-            if (body) body = `<p>${body}</p>`;
-            else body = sel.html();
-
-            if (props.image) {
-                const img = card.append('img')
-                    .classed("card-img-top", true)
-                    .attr("src", props.image)
-                    .attr("alt", props.imageAlt || props.title);
-                if (props.imageHeight) img.attr("height", props.imageHeight);
-            }
-            const main = card.append('div').classed("card-body", true);
-            if (props.title) body.append(props.titleTag).classed("card-title", true).text(props.title);
-            main.append('div').html(body);
-            return card;
-        }
-    };
-
-    const
         COLLAPSE = 'collapse',
         COLLAPSING = 'd3-collapsing',
         COLLAPSED = 'collapsed',
@@ -259,7 +273,7 @@
     );
 
 
-    var collapse = {
+    var viewCollapse = {
         events,
 
         refresh () {
@@ -403,29 +417,6 @@
 
     };
 
-    var index$3 = {
-
-        refresh (model, options) {
-            var self = this,
-                opts = options && options.$data ? options.$data() : {};
-
-            this.require('flatpickr').then(flatpickr => {
-                if (self.fp) self.fp.destroy();
-                self.sel.on('input', null);
-                self.sel.on('change', null);
-                model.$emit('flatpickr', opts);
-                self.fp = flatpickr.default(self.el, opts);
-            });
-        },
-
-        destroy () {
-            if (this.fp) {
-                this.fp.destroy();
-                this.fp = null;
-            }
-        }
-    };
-
     var activity = "<polyline points=\"22 12 18 12 15 21 9 3 6 12 2 12\"></polyline>";
     var airplay = "<path d=\"M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1\"></path><polygon points=\"12 15 17 21 7 21 12 15\"></polygon>";
     var anchor = "<circle cx=\"12\" cy=\"5\" r=\"3\"></circle><line x1=\"12\" y1=\"22\" x2=\"12\" y2=\"8\"></line><path d=\"M5 12H2a10 10 0 0 0 20 0h-3\"></path>";
@@ -492,7 +483,7 @@
     var loader = "<line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"6\"></line><line x1=\"12\" y1=\"18\" x2=\"12\" y2=\"22\"></line><line x1=\"4.93\" y1=\"4.93\" x2=\"7.76\" y2=\"7.76\"></line><line x1=\"16.24\" y1=\"16.24\" x2=\"19.07\" y2=\"19.07\"></line><line x1=\"2\" y1=\"12\" x2=\"6\" y2=\"12\"></line><line x1=\"18\" y1=\"12\" x2=\"22\" y2=\"12\"></line><line x1=\"4.93\" y1=\"19.07\" x2=\"7.76\" y2=\"16.24\"></line><line x1=\"16.24\" y1=\"7.76\" x2=\"19.07\" y2=\"4.93\"></line>";
     var lock = "<rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path>";
     var mail = "<path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path><polyline points=\"22,6 12,13 2,6\"></polyline>";
-    var map = "<polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line>";
+    var map$1 = "<polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line>";
     var maximize = "<path d=\"M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3\"></path>";
     var menu = "<line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"></line><line x1=\"3\" y1=\"6\" x2=\"21\" y2=\"6\"></line><line x1=\"3\" y1=\"18\" x2=\"21\" y2=\"18\"></line>";
     var mic = "<path d=\"M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z\"></path><path d=\"M19 10v2a7 7 0 0 1-14 0v-2\"></path><line x1=\"12\" y1=\"19\" x2=\"12\" y2=\"23\"></line><line x1=\"8\" y1=\"23\" x2=\"16\" y2=\"23\"></line>";
@@ -630,7 +621,7 @@
     	loader: loader,
     	lock: lock,
     	mail: mail,
-    	map: map,
+    	map: map$1,
     	maximize: maximize,
     	menu: menu,
     	mic: mic,
@@ -893,7 +884,7 @@
         }
     };
 
-    var index$4 = {
+    var viewMarked = {
         components: {icon},
 
         props: {
@@ -1114,9 +1105,9 @@
     //  * collapse directive
     //  * active directive (Optional)
     //
-    var index$5 = {
+    var viewSidebar = {
         components: {group, icon},
-        directives: {active, collapse},
+        directives: {active: viewActive, collapse: viewCollapse},
 
         props: {
             id: 'sidebar',
@@ -1163,99 +1154,6 @@
             if (!item.href) item.$set('href', item.name);
             if (!item.items) item.items = [];
             items[i] = item;
-        }
-    };
-
-    var tpl$2 = "<div class=\"tabs-container\">\n    <ul class=\"nav\" d3-class=\"tabClass\">\n        <li d3-for=\"tab in tabItems\" class=\"nav-item\">\n            <a class=\"nav-link\"\n                d3-attr-href=\"tab.href\"\n                d3-html=\"tab.label\"\n                d3-on-click=\"$selectTab(tab)\"\n                d3-active=\"tab.active\"\n                data-active-strict>\n            </a>\n        </li>\n    </ul>\n    <div class=\"nav-target\"\n        d3-html=\"tabTarget\"\n        data-transition-duration={{tabTransitionDuration}}>\n    </div>\n</div>\n";
-
-    const tabClasses = {
-        none: null,
-        tabs: 'nav-tabs',
-        pills: 'nav-pills'
-    };
-
-
-    //  Reusable Tabs component with Navigo
-    //
-    //  Requires:
-    //
-    //  * d3-active directive
-    //
-    var index$6 = {
-        props: {
-            tabTransitionDuration: 250
-        },
-
-        model () {
-            return {
-                tabItems: [],
-                tabType: 'tabs',
-                tabTarget: "",
-                tabClass: {
-                    reactOn: ['tabType'],
-                    get () {
-                        return tabClasses[this.tabType];
-                    }
-                },
-                // select a tab
-                $selectTab (tab) {
-                    if (d3Let.isObject(tab)) tab = tab.href;
-
-                    var target = this.targets.get(tab),
-                        event = this.$event;
-
-                    if (target) {
-                        // when local targets are available rather than remote ones
-                        this.tabTarget = target;
-                        if (event && event.currentTarget) this.currentUrl = event.currentTarget.href;
-                    } else {
-                        // use router if available
-                        var router = this.$$view.root.router;
-                        if (router && event && event.currentTarget) {
-                            event.preventDefault();
-                            router.navigate(event.currentTarget.href, true);
-                        }
-                    }
-                    this.tabItems.forEach(item => {
-                        item.active = (item.href === tab);
-                    });
-                }
-            };
-        },
-
-        render (props, attrs, el) {
-            var self = this,
-                model = this.model,
-                items = model.tabItems;
-
-            model.targets = new Map;
-
-            items.forEach((item, idx) => {
-                if (d3Let.isString(item)) {
-                    item = model.$new({label: item});
-                    items[idx] = item;
-                }
-                if (!item.label) item.label = `item ${idx+1}`;
-                if (!item.id) item.id = d3View.viewSlugify(item.label);
-                if (!item.href) item.href = `#${item.id}`;
-                //
-                return item;
-            });
-
-            //
-            //  cache existing targets if avalable
-            this.selectChildren(el).each(function (idx) {
-                var sel = self.select(this),
-                    id = sel.attr('id') || (items[idx] ? items[idx].id : null);
-                if (id) model.targets.set(`#${id}`, sel.html());
-            });
-
-            // model.type = data.type;
-            return this.viewElement(tpl$2, props);
-        },
-
-        mounted () {
-
         }
     };
 
@@ -1778,7 +1676,7 @@
     Navigo.FOLLOWED_BY_SLASH_REGEXP = '(?:\/$|$)';
     Navigo.MATCH_REGEXP_FLAGS = '';
 
-    var index$7 = {
+    var viewRouter = {
 
         install (vm) {
             const config = vm.props.routerConfig || {};
@@ -1825,7 +1723,7 @@
         },
 
         with (obj) {
-            obj = d3Let.assign({}, obj);
+            obj = objectAssign({}, obj);
             if (!obj.props) obj.props = {};
             obj.props.routeParams = {};
             obj.props.routeQuery = '';
@@ -1835,21 +1733,264 @@
 
     d3View.viewProviders.compileTemplate = Handlebars.compile;
 
-    exports.viewFluidVersion = version;
-    exports.viewActive = active;
-    exports.viewAlert = index;
-    exports.viewAutocomplete = index$1;
-    exports.viewCard = index$2;
-    exports.viewCollapse = collapse;
-    exports.viewFlatpickr = index$3;
-    exports.viewIcons = icons;
-    exports.viewMarked = index$4;
-    exports.viewModal = viewModal;
-    exports.viewSidebar = index$5;
-    exports.viewTabs = index$6;
-    exports.viewRouter = index$7;
+    function viewComponents (vm) {
+        vm.use(d3View.viewForms)
+            .use(d3View.viewBootstrapForms)
+            .use(viewModal)
+            .use(viewRouter)
+            .use(viewAlert)
+            .use(icons);
+
+        vm.addComponent('markdown', viewMarked);
+    }
+
+    function template (ctx) {
+        return (`
+        <sidebar id="main"
+            data-model="sidenav"
+            data-brand="title"
+            data-brand-url="/"
+            data-navbar-title="title"
+            data-navbar-title-Url="currentUrl">
+            <routes>
+                <markdown-route path="/components/:name">
+                    <markdown>${ctx.content}</markdown>
+                </markdown-route>
+            </routes>
+            ${ctx.footer}
+        </sidebar>
+    `);
+    }
+
+
+    const markdownRoute = {
+        render () {
+            const url = this.router.lastRouteResolved().url;
+            return this.json(`${url}.json`).then(response => {
+                const data = response.data;
+                return `<markdown>${data.content}</markdown>`;
+            });
+        }
+    };
+
+
+    var sidenav = {
+        components: {
+            markdownRoute,
+            sidebar: viewSidebar
+        },
+
+        directives: {
+            collapse: viewCollapse,
+            active: viewActive
+        },
+
+        render (el) {
+            let
+                content = this.select(el).html(),
+                sidenav = this.model[this.name],
+                footer = '';
+            if (!sidenav) {
+                sidenav =  this.model.$new();
+                this.model[this.name] = sidenav;
+            }
+            if (!sidenav.primaryItems)
+                return this.json('nav.json').then(response => {
+                    sidenav.$set('primaryItems', response.data);
+                    return template({content, footer, path: this.props.path});
+                });
+            else
+                return template({content, footer});
+        }
+    };
+
+    var metadata = {
+
+        install (vm, metadata) {
+            var head = vm.select('head');
+            metadata = objectAssign(metadata || {}, head.attr('data-meta'));
+            if (!metadata.title) {
+                var t = head.select('title');
+                metadata.title = t.size() === 1 ? t.text() : '';
+            }
+            vm.model.metadata = metadata;
+            vm.events.on('mounted.metadata', bindMeta);
+        }
+    };
+
+
+    function bindMeta (vm) {
+        if (vm.parent) return;
+        var head = vm.select('head');
+
+        vm.model.metadata.$on(() => {
+            let meta;
+            var data = vm.model.metadata.$data();
+            Object.keys(data).forEach(key => {
+                meta = metaHandlers[key] || metaHandlers.content;
+                meta(head, key, data[key]);
+            });
+        });
+    }
+
+
+    const metaHandlers = {
+        title (head, key, value) {
+
+            var el = head.select(key);
+            if (!el.node) el = head.insert(key, ":first-child");
+            el.text(value);
+        },
+
+        content (head, key, value) {
+            var el = head.select(`meta name="${key}"`);
+            if (!el.node()) el.head.append('meta').attr('name', key);
+            el.attr('content', value);
+        }
+    };
+
+    var card = {
+        props: {
+            title: '',
+            titleTag: 'h5',
+            image: null,
+            imageHeight: null
+        },
+
+        render (props, attrs, el) {
+            var sel = this.select(el),
+                body = sel.text(),
+                card = this.createElement('div').classed('card', true);
+
+            if (body) body = `<p>${body}</p>`;
+            else body = sel.html();
+
+            if (props.image) {
+                const img = card.append('img')
+                    .classed("card-img-top", true)
+                    .attr("src", props.image)
+                    .attr("alt", props.imageAlt || props.title);
+                if (props.imageHeight) img.attr("height", props.imageHeight);
+            }
+            const main = card.append('div').classed("card-body", true);
+            if (props.title) main.append(props.titleTag).classed("card-title", true).text(props.title);
+            main.append('div').html(body);
+            return card;
+        }
+    };
+
+    //
+    // Live code
+    // idea from https://github.com/FormidableLabs/react-live
+    var viewLive = {
+
+        render (props, attrs, el) {
+            this._code = this.select(el).text();
+            this._mountPoint = `live-${this.uid}`;
+            el = this.createElement('div').classed('row', true);
+
+            el.append('div').classed('col-md-6', true);
+            el.append('div').classed('col-md-6', true).attr('id', this._mountPoint);
+
+            return el;
+        },
+
+        mounted () {
+            const scope = {
+                mountPoint: `#${this._mountPoint}`
+            };
+            evalCode(this._code, scope);
+        }
+    };
+
+
+    function evalCode (code, scope) {
+        const scopeKeys = Object.keys(scope);
+        const scopeValues = scopeKeys.map(key => scope[key]);
+        //const res = new Function('_poly', 'React', ...scopeKeys, code);
+        //return res(_poly, React, ...scopeValues);
+        return scopeValues;
+    }
+
+    const template$1 = ctx => {
+        var nav =  ctx.navigationRight.map(item => {
+            return (`
+            <li class="nav-item">
+                <a class="nav-link" href="${item.href}">${item.name}</a>
+            </li>
+        `);
+        }).join('\n');
+
+        return (`
+        <div class="d3-fluid">
+            <nav class="navbar navbar-expand-${ctx.collapse} ${ctx.theme}">
+                <a class="navbar-brand" href="/" html="${ctx.brand}"></a>
+                <ul class="navbar-nav ml-auto">${nav}</ul>
+            </nav>
+            <markdown>${ctx.content}</markdown>
+            ${ctx.footer}
+        </div>
+    `);
+    };
+
+
+    var topnav = {
+        props: {
+            theme: 'navbar-dark bg-dark',
+            collapse: 'sm',
+            brand: '',
+            navigationRight: []
+        },
+
+        render (el) {
+            const
+                content = this.select(el).html(),
+                footer = '',
+                ctx = objectAssign({content, footer}, this.props);
+            return template$1(ctx);
+        }
+    };
+
+    var dev = vm => {
+        // Enable LiveReload
+        vm.select('head')
+            .append('script')
+            .attr('src', `http://${(location.host || 'localhost').split(':')[0]}:35729/livereload.js?snipver=1`);
+    };
+
+    const components = {
+        'view-live': viewLive,
+        card,
+        sidenav,
+        topnav
+    };
+
+    //  Create View
+    //
+    function start (root) {
+        if (!root) root = window;
+        const model = root.config || {},
+            props = pop(model, 'meta') || {};
+
+        // Build the model-view pair
+        var vm = d3View.view({props, model, components}).use(viewComponents).use(metadata);
+
+        root.fluid = vm;
+        //
+        var el = root.document.getElementById('root');
+        vm.mount(el).then(() => {
+            if (vm.props.env === 'dev') dev(vm);
+            vm.sel.transition(150).style('opacity', 1);
+        });
+    }
+
+    exports.version = version;
+    exports.start = start;
+    exports.metadata = metadata;
+    exports.sidenav = sidenav;
+    exports.live = viewLive;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=d3-fluid.js.map
+//# sourceMappingURL=d3-fluid-app.js.map
